@@ -1,0 +1,38 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Градиентный фон как в дизайне -->
+    <defs>
+        <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1a1a2e"/>
+            <stop offset="50%" stop-color="#16213e"/>
+            <stop offset="100%" stop-color="#0f3460"/>
+        </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#heroGradient)"/>
+    
+    <!-- Сетка как в дизайне -->
+    <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M40,0 L40,40 M0,40 L40,40" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+    </pattern>
+    <rect width="1200" height="800" fill="url(#grid)"/>
+    
+    <!-- Символические элементы -->
+    <g transform="translate(600, 400)">
+        <!-- Щит с красным крестом -->
+        <circle r="80" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+        <rect x="-20" y="-40" width="40" height="80" fill="#8B0000" opacity="0.8"/>
+        <rect x="-40" y="-20" width="80" height="40" fill="#8B0000" opacity="0.8"/>
+        
+        <!-- Лучи -->
+        <g stroke="#ff6b35" stroke-width="3" opacity="0.6">
+            <line x1="-100" y1="0" x2="-90" y2="0"/>
+            <line x1="90" y1="0" x2="100" y2="0"/>
+            <line x1="0" y1="-100" x2="0" y2="-90"/>
+            <line x1="0" y1="90" x2="0" y2="100"/>
+        </g>
+    </g>
+    
+    <!-- Текст -->
+    <text x="600" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.7)">
+        Цена Победы: Раненый Солдат — Подвиг военной медицины
+    </text>
+</svg>

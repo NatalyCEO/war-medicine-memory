@@ -1,0 +1,81 @@
+{
+  "fronts": [
+    {
+      "id": "northern",
+      "name": "Северный фронт",
+      "period": "64 дня (24.06.41 - 26.08.41)",
+      "losses": {
+        "total": 148364,
+        "killed": 22334,
+        "wounded": 60271,
+        "missing": 61537,
+        "nonCombat": 1588
+      },
+      "daily": 2318,
+      "years": ["1941"],
+      "color": "#FF6B35"
+    },
+    {
+      "id": "leningrad",
+      "name": "Ленинградский фронт",
+      "period": "1353 дня (26.08.41 - 9.05.45)",
+      "losses": {
+        "total": 1754898,
+        "killed": 332059,
+        "wounded": 949761,
+        "missing": 111142,
+        "nonCombat": 24324
+      },
+      "daily": 1296,
+      "years": ["1941", "1942", "1943", "1944", "1945"],
+      "color": "#8B0000"
+    },
+    {
+      "id": "western",
+      "name": "Западный фронт",
+      "period": "1037 дней (22.06.41 - 24.04.44)",
+      "losses": {
+        "total": 3534275,
+        "killed": 586336,
+        "wounded": 1703521,
+        "missing": 866604,
+        "nonCombat": 82349
+      },
+      "daily": 3408,
+      "years": ["1941", "1942", "1943", "1944"],
+      "color": "#2F4F4F"
+    }
+  ],
+  "yearly": {
+    "1941": {
+      "killed": 385221,
+      "missing": 1204583,
+      "wounded": 892345,
+      "total": 2482149
+    },
+    "1942": {
+      "killed": 684532,
+      "missing": 452187,
+      "wounded": 1567843,
+      "total": 2704562
+    },
+    "1943": {
+      "killed": 725643,
+      "missing": 89234,
+      "wounded": 1845672,
+      "total": 2657549
+    },
+    "1944": {
+      "killed": 623421,
+      "missing": 15432,
+      "wounded": 1754321,
+      "total": 2392174
+    },
+    "1945": {
+      "killed": 234567,
+      "missing": 5432,
+      "wounded": 987654,
+      "total": 1227653
+    }
+  }
+}

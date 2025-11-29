@@ -1,0 +1,264 @@
+/* Responsive design */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 992px;
+    }
+    
+    :root {
+        --section-padding: 80px 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 768px;
+    }
+    
+    .losses-dashboard {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .map-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .pie-chart {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .dynamics-controls {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 576px;
+        padding: 0 15px;
+    }
+    
+    :root {
+        --section-padding: 60px 0;
+    }
+    
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 2em; }
+    h3 { font-size: 1.5em; }
+    
+    .hero-stats {
+        gap: 30px;
+    }
+    
+    .stat-number {
+        font-size: 2em;
+    }
+    
+    .chart-container {
+        padding: 20px;
+    }
+    
+    .chart-bars {
+        gap: 10px;
+    }
+    
+    .year-column {
+        max-width: 60px;
+    }
+    
+    .bar-stack {
+        width: 45px;
+    }
+    
+    .bar-segment .segment-value {
+        font-size: 0.7em;
+    }
+    
+    .journey-timeline::before {
+        left: 30px;
+    }
+    
+    .step-marker {
+        margin-right: 25px;
+    }
+    
+    .step-number {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9em;
+    }
+    
+    .step-icon {
+        font-size: 1.5em;
+    }
+    
+    .step-content {
+        padding: 20px;
+    }
+    
+    .step-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .key-insight {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .summary-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    
+    .map-visual {
+        padding: 20px;
+        min-height: 400px;
+    }
+    
+    .map-overlay {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 20px;
+    }
+    
+    .fronts-list {
+        order: -1;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    :root {
+        --section-padding: 40px 0;
+    }
+    
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.8em; }
+    
+    .hero-title {
+        font-size: 2em;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .share-button, .data-button {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .table-controls {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .export-btn, .print-btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+    
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .insight-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .insight-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* High-resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero-section::before {
+        background-size: 10px 10px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .hero-section,
+    .conclusion-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .cta-button,
+    .share-button,
+    .data-button {
+        display: none !important;
+    }
+    
+    .hero-section {
+        background: white !important;
+        color: black !important;
+        min-height: auto;
+    }
+    
+    .hero-section::before {
+        display: none;
+    }
+    
+    .stat-number {
+        color: black !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .hero-section::before {
+        animation: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --gray-light: #1a1a1a;
+        --gray-border: #333;
+        --text-dark: #e0e0e0;
+        --text-light: #a0a0a0;
+        --white: #1a1a1a;
+    }
+    
+    .chart-container,
+    .stat-card,
+    .front-card {
+        background: #2a2a2a;
+        color: var(--text-dark);
+    }
+    
+    .scale-section {
+        background: #1a1a1a;
+    }
+}
