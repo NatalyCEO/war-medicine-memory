@@ -9,7 +9,6 @@ class WarMedicineApp {
     init() {
         this.cacheElements();
         this.bindEvents();
-        this.initAnimations();
         this.loadData();
     }
 
