@@ -202,11 +202,46 @@ function fallbackShare(url) {
 
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    window.app = new WarMedicineApp();
+    console.log('DOM loaded, initializing app...');
     
-    // Initialize hero section counters
-    const heroCounters = document.querySelectorAll('.hero-section .stat-number');
-    heroCounters.forEach(counter => {
-        window.app.animateCounter(counter, 2500);
-    });
+    try {
+        window.app = new WarMedicineApp();
+        console.log('App initialized successfully');
+    } catch (error) {
+        console.error('Error initializing app:', error);
+    }
+    
+    initHeroCounters();
 });
+
+function initHeroCounters() {
+    const counters = document.querySelectorAll('.hero-stats .stat-number');
+    
+    if (!counters.length) return;
+    
+    counters.forEach(counter => {
+        if (!counter.classList.contains('animated')) {
+            const target = parseInt(counter.dataset.target);
+            const isPercentage = target < 100;
+            let current = 0;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = isPercentage ? target + '%' : target.toLocaleString('ru-RU');
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = isPercentage 
+                        ? Math.floor(current) + '%' 
+                        : Math.floor(current).toLocaleString('ru-RU');
+                }
+            }, 16);
+            
+            counter.classList.add('animated');
+        }
+    });
+}
+
+window.addEventListener('load', initHeroCounters);

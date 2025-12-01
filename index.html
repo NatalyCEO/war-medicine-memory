@@ -22,44 +22,70 @@
     (function() {
         console.log('Hero counters script loaded');
         
-        function animateHeroCounters() {
-            const counters = document.querySelectorAll('.hero-stats .stat-number');
-            console.log('Animating', counters.length, 'counters');
+        function animateCounter(counter) {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const isPercent = target < 100;
             
-            counters.forEach(counter => {
-                // Сбросим на 0 для анимации
-                counter.textContent = '0';
+            // Не сбрасываем на 0, если уже анимировано
+            if (counter.classList.contains('animated')) return;
+            
+            counter.classList.add('animated');
+            
+            let current = 0;
+            const duration = 2000;
+            const step = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                current += step;
                 
-                const target = parseInt(counter.getAttribute('data-target'));
-                const isPercent = target < 100;
-                
-                let current = 0;
-                const duration = 2000;
-                const step = target / (duration / 16);
-                
-                const timer = setInterval(() => {
-                    current += step;
-                    
-                    if (current >= target) {
-                        counter.textContent = isPercent ? target + '%' : target.toLocaleString();
-                        clearInterval(timer);
+                if (current >= target) {
+                    if (isPercent) {
+                        counter.textContent = target + '%';
+                    } else if (target >= 1000000) {
+                        // Форматирование для миллионов
+                        counter.textContent = (target / 1000000).toFixed(1) + 'M';
                     } else {
-                        counter.textContent = isPercent 
-                            ? Math.floor(current) + '%' 
-                            : Math.floor(current).toLocaleString();
+                        counter.textContent = target.toLocaleString('ru-RU');
                     }
-                }, 16);
-            });
+                    clearInterval(timer);
+                } else {
+                    if (isPercent) {
+                        counter.textContent = Math.floor(current) + '%';
+                    } else if (target >= 1000000) {
+                        counter.textContent = (Math.floor(current) / 1000000).toFixed(1) + 'M';
+                    } else {
+                        counter.textContent = Math.floor(current).toLocaleString('ru-RU');
+                    }
+                }
+            }, 16);
         }
         
-        // Запускаем сразу
-        animateHeroCounters();
+        function initHeroCounters() {
+            const counters = document.querySelectorAll('.hero-stats .stat-number, .hero-section .stat-number');
+            
+            if (counters.length === 0) {
+                console.log('No hero counters found yet, retrying...');
+                setTimeout(initHeroCounters, 100);
+                return;
+            }
+            
+            console.log('Found', counters.length, 'hero counters');
+            counters.forEach(animateCounter);
+        }
         
-        // И еще раз через 100мс на всякий случай
-        setTimeout(animateHeroCounters, 100);
-        setTimeout(animateHeroCounters, 500);
+        // Запускаем при разных событиях для надежности
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHeroCounters);
+        } else {
+            initHeroCounters();
+        }
+        
+        window.addEventListener('load', initHeroCounters);
+        
+        // Дополнительный запуск с задержкой
+        setTimeout(initHeroCounters, 500);
     })();
-    </script>
+</script>
 <body>
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
