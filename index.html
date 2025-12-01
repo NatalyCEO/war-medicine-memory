@@ -17,6 +17,49 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
+<script>
+    // Animation on hero-section counters (standalone)
+    (function() {
+        console.log('Hero counters script loaded');
+        
+        function animateHeroCounters() {
+            const counters = document.querySelectorAll('.hero-stats .stat-number');
+            console.log('Animating', counters.length, 'counters');
+            
+            counters.forEach(counter => {
+                // Сбросим на 0 для анимации
+                counter.textContent = '0';
+                
+                const target = parseInt(counter.getAttribute('data-target'));
+                const isPercent = target < 100;
+                
+                let current = 0;
+                const duration = 2000;
+                const step = target / (duration / 16);
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    
+                    if (current >= target) {
+                        counter.textContent = isPercent ? target + '%' : target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = isPercent 
+                            ? Math.floor(current) + '%' 
+                            : Math.floor(current).toLocaleString();
+                    }
+                }, 16);
+            });
+        }
+        
+        // Запускаем сразу
+        animateHeroCounters();
+        
+        // И еще раз через 100мс на всякий случай
+        setTimeout(animateHeroCounters, 100);
+        setTimeout(animateHeroCounters, 500);
+    })();
+    </script>
 <body>
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
