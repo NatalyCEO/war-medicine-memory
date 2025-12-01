@@ -112,21 +112,20 @@ class WarMedicineApp {
         const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
+                // ФОРМАТИРОВАНИЕ: для героя нужно просто число, а не миллионы
                 if (isPercentage) {
                     element.textContent = target + '%';
-                } else if (target > 1000000) {
-                    element.textContent = (target / 1000000).toFixed(1) + 'M';
                 } else {
-                    element.textContent = target.toLocaleString();
+                    // Для героя: обычное число с разделителями
+                    element.textContent = target.toLocaleString('ru-RU');
                 }
                 clearInterval(timer);
             } else {
                 if (isPercentage) {
                     element.textContent = Math.floor(current) + '%';
-                } else if (target > 1000000) {
-                    element.textContent = Math.floor(current / 1000000) + 'M';
                 } else {
-                    element.textContent = Math.floor(current).toLocaleString();
+                    // Для героя: обычное число при анимации
+                    element.textContent = Math.floor(current).toLocaleString('ru-RU');
                 }
             }
         }, 16);
