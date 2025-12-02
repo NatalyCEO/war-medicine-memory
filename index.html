@@ -1252,20 +1252,6 @@
                 
                 <div class="dynamics-controls">
                     <div class="control-group">
-                        <label>Тип графика:</label>
-                        <div class="radio-buttons">
-                            <input type="radio" id="chart-stacked" name="chart-type" checked>
-                            <label for="chart-stacked">Накопленный</label>
-                            
-                            <input type="radio" id="chart-line" name="chart-type">
-                            <label for="chart-line">Линейный</label>
-                            
-                            <input type="radio" id="chart-percentage" name="chart-type">
-                            <label for="chart-percentage">Проценты</label>
-                        </div>
-                    </div>
-                    
-                    <div class="control-group">
                         <label>Фронт:</label>
                         <select id="front-select">
                             <option value="all">Все фронты</option>
@@ -1375,14 +1361,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="chart-lines" id="line-chart" style="display: none;">
-                            <!-- Линейный график будет генерироваться JavaScript -->
-                        </div>
-                        
-                        <div class="chart-percentage" id="percentage-chart" style="display: none;">
-                            <!-- Процентный график будет генерироваться JavaScript -->
-                        </div>
                     </div>
                     
                     <div class="chart-axis">
@@ -1448,35 +1426,6 @@
             font-weight: 600;
             color: #1a1a2e;
             margin-bottom: 5px;
-        }
-
-        .radio-buttons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .radio-buttons input[type="radio"] {
-            display: none;
-        }
-
-        .radio-buttons label {
-            padding: 8px 16px;
-            background: #f8f9fa;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            border: 2px solid transparent;
-        }
-
-        .radio-buttons input[type="radio"]:checked + label {
-            background: #ff6b35;
-            color: white;
-            border-color: #ff6b35;
-        }
-
-        .radio-buttons label:hover {
-            border-color: #ff6b35;
         }
 
         #front-select {
@@ -1702,32 +1651,6 @@
 
         <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Переключение типов графиков
-            const chartTypeRadios = document.querySelectorAll('input[name="chart-type"]');
-            const chartContainers = {
-                stacked: document.getElementById('stacked-chart'),
-                line: document.getElementById('line-chart'),
-                percentage: document.getElementById('percentage-chart')
-            };
-            
-            chartTypeRadios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    // Скрываем все графики
-                    Object.values(chartContainers).forEach(container => {
-                        container.style.display = 'none';
-                    });
-                    
-                    // Показываем выбранный
-                    if (this.id === 'chart-stacked') {
-                        chartContainers.stacked.style.display = 'flex';
-                    } else if (this.id === 'chart-line') {
-                        chartContainers.line.style.display = 'block';
-                    } else if (this.id === 'chart-percentage') {
-                        chartContainers.percentage.style.display = 'block';
-                    }
-                });
-            });
-            
             // Взаимодействие с колонками годов
             const yearColumns = document.querySelectorAll('.year-column');
             const insights = document.querySelectorAll('.insight');
@@ -1745,31 +1668,7 @@
                     });
                 });
             });
-            
-            // Инициализация линейного и процентного графиков
-            initializeLineChart();
-            initializePercentageChart();
         });
-
-        function initializeLineChart() {
-            const lineChart = document.getElementById('line-chart');
-            // Здесь будет код для генерации линейного графика
-            lineChart.innerHTML = `
-                <div style="text-align: center; padding: 100px 0; color: #666;">
-                    Линейный график будет реализован с помощью Chart.js
-                </div>
-            `;
-        }
-
-        function initializePercentageChart() {
-            const percentageChart = document.getElementById('percentage-chart');
-            // Здесь будет код для генерации процентного графика
-            percentageChart.innerHTML = `
-                <div style="text-align: center; padding: 100px 0; color: #666;">
-                    Процентный график будет реализован с помощью Chart.js
-                </div>
-            `;
-        }
         </script>
     </section>
 
@@ -3202,7 +3101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 Проект создан на основе архивных данных. Память о подвиге жива.</p>
+                <p>© 2025 Проект создан на основе архивных данных. Память о подвиге жива.</p>
             </div>
         </div>
     </footer>
@@ -3212,7 +3111,5 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="js/animations.js"></script>
     <script src="js/charts.js"></script>
     <script src="js/table.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
-    <script src="js/charts-advanced.js"></script>
 </body>
 </html>
